@@ -1,0 +1,64 @@
+SERVICE AGREEMENT
+
+This Service Agreement ("Agreement") is entered into as of January 15, 2025, by and between:
+
+ACME Corporation, a Delaware corporation ("Client")
+123 Main Street, San Francisco, CA 94105
+
+AND
+
+TechSolutions Inc., a California corporation ("Vendor")
+456 Innovation Drive, Austin, TX 78701
+
+1. SERVICES
+
+Vendor agrees to provide the following services to Client:
+- Cloud infrastructure management and monitoring
+- 24/7 technical support (Tier 1, 2, and 3)
+- Monthly security audits and compliance reporting
+- Custom software development (up to 200 hours/month)
+- Data backup and disaster recovery services
+
+2. TERM
+
+This Agreement shall commence on February 1, 2025, and continue for a period of 24 months, expiring on January 31, 2027, unless earlier terminated.
+
+3. COMPENSATION
+
+Client agrees to pay Vendor the following fees:
+- Base monthly retainer: $45,000/month
+- Custom development overage: $250/hour beyond included hours
+- Emergency support premium: 1.5x standard rate
+- Annual price adjustment: CPI + 2%
+
+Total estimated annual contract value: $540,000
+
+4. PAYMENT TERMS
+
+Invoices shall be submitted on the first business day of each month. Payment is due within 30 days of invoice date. Late payments accrue interest at 1.5% per month.
+
+5. CONFIDENTIALITY
+
+Both parties agree to maintain strict confidentiality of all proprietary information exchanged during the term of this Agreement and for 3 years thereafter.
+
+6. INTELLECTUAL PROPERTY
+
+All custom software developed under this Agreement shall be owned by Client upon full payment. Vendor retains rights to pre-existing IP and general methodologies.
+
+7. TERMINATION
+
+Either party may terminate this Agreement with 60 days written notice. Client may terminate immediately for cause. Early termination by Client without cause requires payment of 3 months remaining fees.
+
+8. LIABILITY LIMITATION
+
+Vendor's total liability shall not exceed the fees paid in the preceding 3 months. Neither party shall be liable for indirect, incidental, or consequential damages.
+
+9. GOVERNING LAW
+
+This Agreement shall be governed by the laws of the State of California.
+
+10. SIGNATORIES
+
+Client: Sarah Johnson, CEO, ACME Corporation
+Vendor: Michael Chen, President, TechSolutions Inc.
+Date: January 15, 2025

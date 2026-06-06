@@ -1,0 +1,105 @@
+{
+  "document": "New-York-Vehicle-Title-Sample.jpeg",
+  "fields": [
+    {
+      "name": "Document type",
+      "type": "text",
+      "prompt": "What type of document is this",
+      "post_process": false,
+      "post_process_prompt": null,
+      "validate_rule": null
+    },
+    {
+      "name": "Document content",
+      "type": "text",
+      "prompt": "Extract all of the content in JSON format",
+      "post_process": false,
+      "post_process_prompt": null,
+      "validate_rule": null
+    }
+  ],
+  "results": {
+    "Document type": {
+      "value": "Certificate of Title",
+      "confidence": 0.98
+    },
+    "Document content": {
+      "value": {
+        "title": "CERTIFICATE OF TITLE",
+        "state": "NEW YORK STATE",
+        "website": "dmv.ny.gov",
+        "notice": "THIS IS A DUPLICATE CERTIFICATE AND MAY BE SUBJECT TO THE RIGHTS OF A PERSON UNDER THE ORIGINAL CERTIFICATE",
+        "title_and_identification_number": [
+          "ABCDEF12345678912",
+          "ABCDEF12345678912"
+        ],
+        "year": "1996",
+        "make": "CHEVR",
+        "model_code": "CVT",
+        "body_hull": "2DSD",
+        "document_no": "752301W",
+        "color": "RD/WH",
+        "wt_sts_d_pgr": "003456",
+        "fuel": "GAS",
+        "cyl_prop": "8",
+        "type_of_vehicle": "USED VEHICLE",
+        "date_issued": "1/09/98",
+        "name_and_address_of_owners": [
+          "MOTORIST, MIKE",
+          "MOTORIST, MARY",
+          "202 SOUTH SWAN ST",
+          "ALBANY NY    12121"
+        ],
+        "odometer_reading": "123456",
+        "actual_mileage": "ACTUAL MILEAGE",
+        "important": "THIS VEHICLE WAS RETURNED TO THE MANUFACTURER OR DEALER BECAUSE IT DID NOT CONFORM TO ITS WARRANTY.",
+        "remarks": [
+          "STOLEN VEHICLE",
+          "INSURANCE TRANSFER ONLY",
+          "RECONSTRUCTED",
+          "KON-USA STD",
+          "REBUILT SALVAGE/NJ",
+          "NON-COMPLYING NJ EMISSIONS"
+        ],
+        "document_instructions": "This document is your proof of ownership for this vehicle, boat or manufactured home. Keep it in a safe place, but with your license or registration or in your vehicle or boat. To dispose of your vehicle, boat or manufactured home, complete the transfer section on the back and give this title to the new owner.",
+        "important_notice": "THIS VEHICLE IS NOT EQUIPPED WITH A TAMPER-RESISTANT ODOMETER",
+        "lienholders": [
+          {
+            "name": "HOUSEHOLD FINANCE DEPT. C.",
+            "address": "123 BROADWAY",
+            "city": "TROY",
+            "state": "NY",
+            "zip": "12180"
+          },
+          {
+            "name": "GMAC",
+            "address": "ALBANY REGIONAL OFC",
+            "city": "ALBANY",
+            "state": "NY",
+            "zip": "12331"
+          },
+          {
+            "name": "STATE BANK CONSUMER LOAN UNIT",
+            "address": "PEARL ST",
+            "city": "ALBANY",
+            "state": "NY",
+            "zip": "11211"
+          },
+          {
+            "name": "KEY BANK",
+            "address": "AUTO LOAN DIVISION",
+            "city": "ALBANY",
+            "state": "NY",
+            "zip": "12121"
+          }
+        ],
+        "form_number": "MV-999 (1/15)",
+        "footer": "DEPARTMENT OF MOTOR VEHICLES",
+        "border_text": "VOID IF ALTERED"
+      },
+      "confidence": 0.86
+    }
+  },
+  "classes": [],
+  "classification_results": []
+}

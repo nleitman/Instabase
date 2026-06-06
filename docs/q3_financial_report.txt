@@ -1,0 +1,79 @@
+QUARTERLY FINANCIAL REPORT - Q3 2025
+GlobalTech Industries
+Confidential - For Internal Use Only
+
+EXECUTIVE SUMMARY
+
+GlobalTech Industries reports strong Q3 2025 performance with total revenue of $847.3 million, representing a 23% year-over-year increase. Operating income reached $142.8 million (16.9% margin), while net income grew to $98.4 million, up 31% from Q3 2024.
+
+REVENUE BREAKDOWN BY SEGMENT
+
+1. Cloud Services Division
+   - Revenue: $412.5M (48.7% of total)
+   - YoY Growth: +38%
+   - Key driver: Enterprise SaaS subscriptions up 45%
+   - Gross margin: 72%
+
+2. Hardware Products
+   - Revenue: $198.7M (23.5% of total)
+   - YoY Growth: -3%
+   - Key driver: Supply chain normalization
+   - Gross margin: 31%
+
+3. Professional Services
+   - Revenue: $156.2M (18.4% of total)
+   - YoY Growth: +18%
+   - Key driver: AI implementation consulting
+   - Gross margin: 45%
+
+4. Licensing & Royalties
+   - Revenue: $79.9M (9.4% of total)
+   - YoY Growth: +12%
+   - Gross margin: 89%
+
+OPERATING EXPENSES
+
+R&D Investment: $127.1M (15% of revenue)
+Sales & Marketing: $169.5M (20% of revenue)
+General & Administrative: $84.7M (10% of revenue)
+Total OpEx: $381.3M
+
+HEADCOUNT
+
+Total employees: 12,847
+New hires Q3: 423
+Voluntary attrition: 2.1%
+Engineering headcount: 4,821
+Sales headcount: 2,103
+
+GEOGRAPHIC REVENUE
+
+North America: $508.4M (60%)
+Europe: $211.8M (25%)
+Asia-Pacific: $101.7M (12%)
+Rest of World: $25.4M (3%)
+
+KEY METRICS
+
+Annual Recurring Revenue (ARR): $1.28B
+Net Revenue Retention: 118%
+Customer Count: 8,432 enterprise accounts
+Average Contract Value: $152K
+
+OUTLOOK
+
+Q4 2025 Guidance:
+- Revenue: $880-910M
+- Operating margin: 17-18%
+- EPS: $0.82-0.87
+
+Full Year 2025 Guidance (Updated):
+- Revenue: $3.22-3.25B (raised from $3.1B)
+- Operating margin: 16-17%
+
+RISK FACTORS
+
+1. Increasing competition in cloud services market
+2. Potential regulatory changes affecting data sovereignty
+3. Currency headwinds from strong USD (~$18M impact)
+4. Enterprise spending caution in H2 2025

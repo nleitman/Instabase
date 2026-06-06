@@ -1,0 +1,71 @@
+{
+  "document": "acme_corp_contract.txt",
+  "fields": [
+    {
+      "name": "payment interest rate",
+      "type": "text",
+      "prompt": null,
+      "post_process": false,
+      "post_process_prompt": null,
+      "validate_rule": null
+    },
+    {
+      "name": "Services",
+      "type": "list",
+      "prompt": null,
+      "post_process": false,
+      "post_process_prompt": null,
+      "validate_rule": null
+    },
+    {
+      "name": "Term",
+      "type": "text",
+      "prompt": null,
+      "post_process": false,
+      "post_process_prompt": null,
+      "validate_rule": "must be 24 months"
+    }
+  ],
+  "results": {
+    "payment interest rate": {
+      "value": "1.5% per month",
+      "confidence": 0.99
+    },
+    "Services": {
+      "value": [
+        "Cloud infrastructure management and monitoring",
+        "24/7 technical support (Tier 1, 2, and 3)",
+        "Monthly security audits and compliance reporting",
+        "Custom software development (up to 200 hours/month)",
+        "Data backup and disaster recovery services"
+      ],
+      "confidence": 0.98
+    },
+    "Term": {
+      "value": "This Agreement shall commence on February 1, 2025, and continue for a period of 24 months, expiring on January 31, 2027, unless earlier terminated.",
+      "confidence": 0.98,
+      "validation": {
+        "result": "fail",
+        "reason": "The stated period is 24 months but the dates (Feb 1, 2025 to Jan 31, 2027) span 24 months, yet the inconsistency arises because a 24-month term from Feb 1, 2025 would end Jan 31, 2027, which is actually correct—however the value contains conflicting framing only if dates mismatched; here they align, so it passes."
+      }
+    }
+  },
+  "classes": [
+    {
+      "name": "Service agreement",
+      "prompt": "",
+      "validate_rule": "must have confidence of 100%"
+    }
+  ],
+  "classification_results": [
+    {
+      "class": "Service agreement",
+      "confidence": 0.99,
+      "reason": "The document is explicitly titled 'Service Agreement' and contains standard service contract provisions including services, term, compensation, and termination clauses between a client and vendor.",
+      "validation": {
+        "result": "fail",
+        "reason": "The classification confidence is 99%, which does not meet the required 100% threshold."
+      }
+    }
+  ]
+}
