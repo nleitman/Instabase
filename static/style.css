@@ -639,6 +639,9 @@ textarea.field-textarea::placeholder { color: var(--text-dim); }
 .class-match    { font-size: 13px; font-weight: 700; color: var(--green); }
 .class-no-match { font-size: 13px; font-weight: 700; color: var(--text-dim); }
 
+.result-field-name.class-name-match    { color: var(--green); }
+.result-field-name.class-name-no-match { color: var(--danger); }
+
 /* ── Per-field validation ────────────────────────────────── */
 .field-validation {
   display: flex;

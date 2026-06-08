@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Bank statement",
+    "prompt": "",
+    "validate_rule": null
+  },
+  {
+    "name": "paystub",
+    "prompt": "",
+    "validate_rule": null
+  },
+  {
+    "name": "passport",
+    "prompt": "",
+    "validate_rule": null
+  }
+]

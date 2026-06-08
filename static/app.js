@@ -24,7 +24,22 @@ const uploadStatus   = document.getElementById("upload-status");
 async function init() {
   await loadDocList();
   addField();
+  await loadClasses();
   initTabs();
+}
+
+async function loadClasses() {
+  const classes = await apiFetch("/api/classes").catch(() => []);
+  classesList.innerHTML = "";
+  classes.forEach(c => addClassCard(c.name, c.prompt || "", c.validate_rule || ""));
+}
+
+async function saveClasses(classes) {
+  await apiFetch("/api/classes", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(classes),
+  });
 }
 
 /* ── Class management ────────────────────────────────────── */
@@ -142,10 +157,9 @@ docSelect.addEventListener("change", async () => {
 
   const saved = await apiFetch(`/api/results/${encodeURIComponent(currentDoc)}`);
 
-  // Always reset fields and classes when document changes
+  // Reset fields when document changes; classes are global and stay as-is
   fieldsList.innerHTML = "";
   fieldCounter = 0;
-  classesList.innerHTML = "";
 
   if (saved && saved.fields && saved.fields.length > 0) {
     saved.fields.forEach(f => addField(
@@ -155,10 +169,6 @@ docSelect.addEventListener("change", async () => {
     ));
   } else {
     addField();
-  }
-
-  if (saved && saved.classes && saved.classes.length > 0) {
-    saved.classes.forEach(c => addClassCard(c.name, c.prompt || "", c.validate_rule || ""));
   }
 
   currentResults = saved;
@@ -316,6 +326,7 @@ runBtn.addEventListener("click", async () => {
     const classes = gatherClasses();
     if (!classes.length) { setStatus("error", "Add at least one class."); return; }
     if (classes.some(c => !c.name)) { setStatus("error", "All classes need a name."); return; }
+    await saveClasses(classes);
     const skipClassification = isClassificationUnchanged(classes, saved);
 
     body = {
@@ -417,7 +428,7 @@ function renderClassificationResults(classes, results) {
     return `
       <div class="result-item">
         <div class="result-header">
-          <span class="result-field-name">${escHtml(cls.name || result.class)}</span>
+          <span class="result-field-name ${isOther ? "class-name-no-match" : "class-name-match"}">${escHtml(cls.name || result.class)}</span>
           <span class="result-type-badge">class</span>
           ${hasConf ? renderConfidence(result.confidence) : ""}
         </div>

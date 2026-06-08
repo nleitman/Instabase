@@ -89,6 +89,18 @@
       "confidence": 0.97
     }
   },
-  "classes": [],
-  "classification_results": []
+  "classes": [
+    {
+      "name": "Bank statement",
+      "prompt": "A bank statement has an account owner, name of the bank, list of transactions, a beginning and ending period and list of transactions",
+      "validate_rule": null
+    }
+  ],
+  "classification_results": [
+    {
+      "class": "Bank statement",
+      "confidence": 0.98,
+      "reason": "Document is a Citibank Citi Priority account statement with account owners, transaction list, and statement period from January 1-31, 2021."
+    }
+  ]
 }

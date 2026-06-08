@@ -12,6 +12,7 @@ from extractor import classify_single, extract_fields, validate_classification, 
 
 DOCS_DIR = Path("docs")
 RESULTS_DIR = Path("results")
+CLASSES_FILE = Path("classes.json")
 DOCS_DIR.mkdir(exist_ok=True)
 RESULTS_DIR.mkdir(exist_ok=True)
 
@@ -62,6 +63,23 @@ def read_doc_content(path: Path) -> str:
         except ImportError:
             raise HTTPException(400, "PDF support requires: pip install pypdf")
     return path.read_text(encoding="utf-8")
+
+
+# ── Class endpoints ───────────────────────────────────────────────────────────
+
+@app.get("/api/classes")
+async def get_classes():
+    if not CLASSES_FILE.exists():
+        return []
+    return json.loads(CLASSES_FILE.read_text())
+
+
+@app.put("/api/classes")
+async def save_classes(classes: List[ClassDefinition]):
+    CLASSES_FILE.write_text(
+        json.dumps([c.model_dump() for c in classes], indent=2, ensure_ascii=False)
+    )
+    return {"status": "saved"}
 
 
 # ── Document endpoints ────────────────────────────────────────────────────────
