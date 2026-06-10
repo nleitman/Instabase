@@ -264,5 +264,12 @@ async def clear_results(filename: str):
     return {"status": "cleared"}
 
 
+@app.delete("/api/results")
+async def clear_all_results():
+    for path in RESULTS_DIR.glob("*.json"):
+        path.unlink()
+    return {"status": "cleared"}
+
+
 # ── Static files ──────────────────────────────────────────────────────────────
 app.mount("/", StaticFiles(directory="static", html=True), name="static")

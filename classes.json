@@ -1,16 +1,11 @@
 [
   {
     "name": "Bank statement",
-    "prompt": "",
+    "prompt": "A Bank Statement is an official bank-issued periodic statement for a personal or business deposit account that typically includes:\n- Bank name/branding\n- Account holder name\n- Account number (full or masked)\n- Statement period start and end dates\n- Beginning and ending balances\n- A transaction ledger (date, description, amount; sometimes running balance)\n- Optional summary totals (total deposits/withdrawals)\n\nVARIABILITY:\n- Layout, pagination, terminology vary by bank and by statement type.\n\nEXCLUSIONS (NOT this class):\n- Individual transaction receipts\n- Pay stubs or income statements\n- Credit reports\n- Loan agreements / promissory notes\n- Screenshots of online banking dashboards\n- Aggregated financial reports",
     "validate_rule": null
   },
   {
-    "name": "paystub",
-    "prompt": "",
-    "validate_rule": null
-  },
-  {
-    "name": "passport",
+    "name": "Paystub",
     "prompt": "",
     "validate_rule": null
   }

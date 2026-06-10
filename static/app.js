@@ -16,6 +16,7 @@ const runBtn         = document.getElementById("run-btn");
 const runStatus      = document.getElementById("run-status");
 const resultsContent = document.getElementById("results-content");
 const clearBtn       = document.getElementById("clear-btn");
+const clearAllBtn    = document.getElementById("clear-all-btn");
 const fileInput      = document.getElementById("file-input");
 const deleteDocBtn   = document.getElementById("delete-doc-btn");
 const uploadStatus   = document.getElementById("upload-status");
@@ -52,7 +53,10 @@ function addClassCard(name = "", prompt = "", validateRule = "") {
       <input type="text" class="class-name" placeholder="Class name…" value="${escHtml(name)}" />
       <button class="remove-field-btn" title="Delete class">&#128465;</button>
     </div>
-    <div class="field-label" style="margin-bottom:4px">Classification Prompt</div>
+    <div class="field-label-row">
+      <div class="field-label">Classification Prompt</div>
+      <button class="toggle-prompt-btn" type="button">Hide</button>
+    </div>
     <textarea class="field-textarea class-prompt" rows="3"
       placeholder="Describe how to identify this class in the document…">${escHtml(prompt)}</textarea>
     <label class="checkbox-row">
@@ -60,7 +64,10 @@ function addClassCard(name = "", prompt = "", validateRule = "") {
       Validation rule
     </label>
     <div class="class-validate-area${validateRule ? "" : " hidden"}">
-      <div class="field-label" style="margin-bottom:4px">Validation rule</div>
+      <div class="field-label-row">
+        <div class="field-label">Validation rule</div>
+        <button class="toggle-validate-btn" type="button">Hide</button>
+      </div>
       <textarea class="field-textarea class-validate-textarea"
         placeholder="Rule to validate this classification result…">${escHtml(validateRule)}</textarea>
     </div>`;
@@ -70,6 +77,20 @@ function addClassCard(name = "", prompt = "", validateRule = "") {
   vCheck.addEventListener("change", () => {
     vArea.classList.toggle("hidden", !vCheck.checked);
     if (!vCheck.checked) card.querySelector(".class-validate-textarea").value = "";
+  });
+
+  const validateToggle   = card.querySelector(".toggle-validate-btn");
+  const validateTextarea = card.querySelector(".class-validate-textarea");
+  validateToggle.addEventListener("click", () => {
+    const isHidden = validateTextarea.classList.toggle("hidden");
+    validateToggle.textContent = isHidden ? "Show" : "Hide";
+  });
+
+  const promptToggle   = card.querySelector(".toggle-prompt-btn");
+  const promptTextarea = card.querySelector(".class-prompt");
+  promptToggle.addEventListener("click", () => {
+    const isHidden = promptTextarea.classList.toggle("hidden");
+    promptToggle.textContent = isHidden ? "Show" : "Hide";
   });
 
   card.querySelector(".remove-field-btn").addEventListener("click", () => card.remove());
@@ -238,7 +259,10 @@ function addField(
       </select>
       <button class="remove-field-btn" title="Delete field">&#128465;</button>
     </div>
-    <div class="field-label" style="margin-bottom:4px">Prompt</div>
+    <div class="field-label-row">
+      <div class="field-label">Prompt</div>
+      <button class="toggle-prompt-btn" type="button">Hide</button>
+    </div>
     <textarea class="field-textarea prompt-textarea" rows="2"
       placeholder="Describe what to extract…">${escHtml(prompt)}</textarea>
     <label class="checkbox-row">
@@ -254,9 +278,19 @@ function addField(
       Validation rule
     </label>
     <div class="validate-area${validateRule?"":" hidden"}">
-      <div class="field-label" style="margin-bottom:4px">Validation rule</div>
+      <div class="field-label-row">
+        <div class="field-label">Validation rule</div>
+        <button class="toggle-validate-btn" type="button">Hide</button>
+      </div>
       <textarea class="field-textarea validate-textarea" placeholder="Rule to test this field's extracted value…">${escHtml(validateRule)}</textarea>
     </div>`;
+
+  const promptToggle   = card.querySelector(".toggle-prompt-btn");
+  const promptTextarea = card.querySelector(".prompt-textarea");
+  promptToggle.addEventListener("click", () => {
+    const isHidden = promptTextarea.classList.toggle("hidden");
+    promptToggle.textContent = isHidden ? "Show" : "Hide";
+  });
 
   const ppCheck = card.querySelector(".post-process-check");
   const ppArea  = card.querySelector(".post-process-area");
@@ -267,6 +301,13 @@ function addField(
   vCheck.addEventListener("change", () => {
     vArea.classList.toggle("hidden", !vCheck.checked);
     if (!vCheck.checked) card.querySelector(".validate-textarea").value = "";
+  });
+
+  const validateToggle   = card.querySelector(".toggle-validate-btn");
+  const validateTextarea = card.querySelector(".validate-textarea");
+  validateToggle.addEventListener("click", () => {
+    const isHidden = validateTextarea.classList.toggle("hidden");
+    validateToggle.textContent = isHidden ? "Show" : "Hide";
   });
 
   card.querySelector(".remove-field-btn").addEventListener("click", () => card.remove());
@@ -389,6 +430,14 @@ clearBtn.addEventListener("click", async () => {
   setStatus("", "");
 });
 
+clearAllBtn.addEventListener("click", async () => {
+  if (!confirm("Delete saved results for ALL documents? This cannot be undone.")) return;
+  await apiFetch("/api/results", { method: "DELETE" });
+  currentResults = null;
+  showResults(null);
+  setStatus("", "");
+});
+
 /* ── Render results ──────────────────────────────────────── */
 function showResults(data, loading = false) {
   if (loading) {
@@ -503,13 +552,13 @@ function renderConfidence(score) {
 
 function renderValue(type, value) {
   if (value === null || value === undefined) return '<span style="color:var(--text-dim)">—</span>';
-  if (type === "table" && Array.isArray(value) && value.length > 0) {
+  if (Array.isArray(value) && value.length > 0 && typeof value[0] === "object" && value[0] !== null) {
     const keys  = Object.keys(value[0]);
     const thead = `<tr>${keys.map(k => `<th>${escHtml(k)}</th>`).join("")}</tr>`;
     const tbody = value.map(row =>
       `<tr>${keys.map(k => `<td>${escHtml(String(row[k] ?? ""))}</td>`).join("")}</tr>`
     ).join("");
-    return `<table class="result-table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
+    return `<div class="result-table-wrap"><table class="result-table"><thead>${thead}</thead><tbody>${tbody}</tbody></table></div>`;
   }
   if (type === "list" && Array.isArray(value)) {
     return `<ul class="result-list">${value.map(i => `<li>${escHtml(String(i))}</li>`).join("")}</ul>`;

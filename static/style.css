@@ -249,6 +249,12 @@ main {
 
 #results-panel { flex: none; }
 
+.panel-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 /* ── Tabs ────────────────────────────────────────────────── */
 .tabs {
   display: flex;
@@ -398,6 +404,39 @@ textarea.field-textarea::placeholder { color: var(--text-dim); }
   letter-spacing: 0.05em;
 }
 
+.field-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.toggle-prompt-btn,
+.toggle-validate-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  padding: 0;
+}
+
+.toggle-prompt-btn:hover,
+.toggle-validate-btn:hover { color: var(--accent-hover); text-decoration: underline; }
+
+textarea.class-prompt,
+textarea.prompt-textarea {
+  height: 50vh;
+}
+
+textarea.validate-textarea,
+textarea.class-validate-textarea {
+  height: 120px;
+}
+
 /* ── Buttons ─────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
@@ -522,6 +561,11 @@ textarea.field-textarea::placeholder { color: var(--text-dim); }
 .result-section-label:first-child { margin-top: 0; }
 
 /* Table */
+.result-table-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
 .result-table {
   width: 100%;
   border-collapse: collapse;
