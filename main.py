@@ -19,7 +19,7 @@ RESULTS_DIR.mkdir(exist_ok=True)
 ALLOWED_EXTENSIONS = {".txt", ".md", ".csv", ".json", ".pdf", ".jpg", ".jpeg", ".png"}
 IMAGE_EXTENSIONS   = {".jpg", ".jpeg", ".png"}
 
-app = FastAPI(title="Doc Extractor")
+app = FastAPI(title="Mock Instabase")
 
 
 # ── Models ────────────────────────────────────────────────────────────────────
