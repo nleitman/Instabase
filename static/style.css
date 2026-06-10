@@ -437,6 +437,10 @@ textarea.class-validate-textarea {
   height: 120px;
 }
 
+textarea.post-process-textarea {
+  height: 180px;
+}
+
 /* ── Buttons ─────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
