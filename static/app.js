@@ -469,7 +469,20 @@ function showResults(data, loading = false) {
 }
 
 function renderClassificationResults(classes, results) {
-  return results.map((result, i) => {
+  const noneMatch = results.length > 0 && results.every(r => r.class === "Other");
+
+  const overallHtml = noneMatch ? `
+    <div class="result-item">
+      <div class="result-header">
+        <span class="result-field-name class-name-match">Other</span>
+        <span class="result-type-badge">class</span>
+      </div>
+      <div class="result-body">
+        <div class="class-match">&#10003; Other</div>
+      </div>
+    </div>` : "";
+
+  const cardsHtml = results.map((result, i) => {
     const cls     = classes[i] || {};
     const isOther = result.class === "Other";
     const hasConf = !isOther && result.confidence != null;
@@ -483,13 +496,15 @@ function renderClassificationResults(classes, results) {
         </div>
         <div class="result-body">
           <div class="${isOther ? "class-no-match" : "class-match"}">
-            ${isOther ? "&#10007; Other" : `&#10003; ${escHtml(result.class)}`}
+            ${isOther ? "&#10007; No match" : `&#10003; ${escHtml(result.class)}`}
           </div>
           ${result.reason ? `<div class="classification-reason" style="margin-top:5px">${escHtml(result.reason)}</div>` : ""}
           ${result.validation ? renderFieldValidation(result.validation) : ""}
         </div>
       </div>`;
   }).join("");
+
+  return overallHtml + cardsHtml;
 }
 
 function renderResultItem(field, entry) {
