@@ -700,6 +700,15 @@ textarea.post-process-textarea {
   border-top: 1px solid var(--border);
 }
 
+.field-validation-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 .field-validation-verdict {
   font-size: 11px;
   font-weight: 800;

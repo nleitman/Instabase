@@ -535,16 +535,17 @@ function renderResultItem(field, entry) {
       </div>
       <div class="result-body">
         ${bodyHtml}
-        ${validation ? renderFieldValidation(validation) : ""}
+        ${validation ? renderFieldValidation(validation, true) : ""}
       </div>
     </div>`;
 }
 
-function renderFieldValidation(v) {
+function renderFieldValidation(v, showLabel) {
   if (!v || !v.result) return "";
   const isPass = v.result.toLowerCase() === "pass";
   return `
     <div class="field-validation">
+      ${showLabel ? `<span class="field-validation-label">Validation:</span>` : ""}
       <span class="field-validation-verdict ${isPass ? "pass" : "fail"}">${isPass ? "&#10003;" : "&#10007;"} ${isPass ? "Pass" : "Fail"}</span>
     </div>`;
 }
